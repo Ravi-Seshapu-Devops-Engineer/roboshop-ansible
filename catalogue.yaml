@@ -18,10 +18,20 @@
       shell: /sbin/nologin
       comment: roboshop system user
 
+  - name: deleting the app directory
+    ansible.builtin.file:
+      path: /app
+      state: absent
+
   - name: create app directory
     ansible.builtin.file:
       path: /app
       state: directory
+
+  - name: deleting the zip file
+    ansible.builtin.file:
+      path: /tmp/catalogue.zip
+      state: absent
 
   - name: Downloading catalogue
     ansible.builtin.get_url:
@@ -32,6 +42,7 @@
     ansible.builtin.unarchive:
       src: /tmp/catalogue.zip
       dest: /app
+      remote_src: yes
 
   - name: installing dependencies
     community.general.npm:
