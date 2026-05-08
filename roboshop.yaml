@@ -44,7 +44,7 @@
       overwrite: true
     loop: "{{ec2_output.results}}"  # list
     when: 
-      -action == "create"
+      - action == "create"
       - item.item != "frontend"
 
   - name: Creating route53 records
