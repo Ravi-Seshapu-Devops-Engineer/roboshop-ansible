@@ -63,9 +63,8 @@
       name: mongodb-mongosh
       state: present
 
-  - name: Check products loaded or not
+  - name: check products loaded
     ansible.builtin.command: mongosh --host "{{ MONGODB_HOST }}" --quiet  --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
-    # taken from shell
     register: catalogue_output
 
   - name: Print the output
