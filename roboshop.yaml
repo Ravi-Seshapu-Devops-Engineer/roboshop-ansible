@@ -12,7 +12,7 @@
     - catalogue
   tasks:
   ###create
-  - name: crearing aws ec2 instances
+  - name: creating aws ec2 instances
     amazon.aws.ec2_instance:
       instance_type: t3.micro
       image_id: "{{ ami_id }}"
